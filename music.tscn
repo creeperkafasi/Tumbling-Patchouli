@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjfs7sjaokmjk"]
+
+[ext_resource type="AudioStream" uid="uid://bnbvppcgfj0xx" path="res://assets/music/kommisar-patchouli.mp3" id="1_76c6d"]
+
+[node name="MUSIC" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_76c6d")
+autoplay = true
+max_distance = 1e+11
+attenuation = 0.00497876
+bus = &"MUSIC"

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6lqmxafs8ar0"]
+
+[ext_resource type="Texture2D" uid="uid://bp567fwcg5u0v" path="res://assets/tundra_ [version 1.0]/tundra_ [resources].png" id="1_ialg2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqo3b"]
+atlas = ExtResource("1_ialg2")
+region = Rect2(64, 24, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uf13"]
+atlas = ExtResource("1_ialg2")
+region = Rect2(48, 24, 16, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rb3x0"]
+size = Vector2(8, 6.5934)
+
+[node name="Tree" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="shadow" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_wqo3b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 25
+texture = SubResource("AtlasTexture_4uf13")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+scale = Vector2(1, 0.985834)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 4.81826)
+shape = SubResource("RectangleShape2D_rb3x0")
