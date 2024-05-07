@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjfs7sjaokmjk"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="AudioStream" uid="uid://bnbvppcgfj0xx" path="res://assets/music/kommisar-patchouli.mp3" id="1_76c6d"]
+[ext_resource type="AudioStream" path="res://assets/music/kommisar-patchouli.mp3" id="1_76c6d"]
 
 [node name="MUSIC" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_76c6d")

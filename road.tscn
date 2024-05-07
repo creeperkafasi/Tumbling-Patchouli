@@ -1,14 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1ra7v3r3ngtl"]
+[gd_scene load_steps=5 format=3 uid="uid://bpcv5khmjcl1w"]
 
 [ext_resource type="TileSet" uid="uid://bsvacac1i6ot" path="res://tiles.tres" id="1_l812o"]
-[ext_resource type="Script" path="res://scripts/road.gd" id="1_ytc43"]
-[ext_resource type="PackedScene" uid="uid://c6lqmxafs8ar0" path="res://obstacles/tree.tscn" id="2_tdc03"]
+[ext_resource type="Script" path="res://scripts/road.gd" id="1_wgeeb"]
+[ext_resource type="PackedScene" path="res://obstacles/tree.tscn" id="2_tdc03"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh2g2"]
 size = Vector2(451, 123)
 
 [node name="Road" type="Node2D"]
-script = ExtResource("1_ytc43")
+script = ExtResource("1_wgeeb")
 obstacles = Array[PackedScene]([ExtResource("2_tdc03")])
 
 [node name="TileMap" type="TileMap" parent="."]

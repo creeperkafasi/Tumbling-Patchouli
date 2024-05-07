@@ -1,6 +1,6 @@
 extends Node2D
 
-var road_scene : PackedScene = preload("res://road.tscn")
+var road_scene : PackedScene = load("res://road.tscn")
 @export var obstacles : Array[PackedScene] 
 var obstacle : Node2D
 @onready var obstacle_range = $ObstacleRange
@@ -13,14 +13,14 @@ func _ready():
 	obstacle.position = position
 	obstacle.position.x += obstacle_x
 	
-	add_sibling(obstacle)
+	add_sibling.call_deferred(obstacle)
 	pass
 
 func _on_enter_area_body_entered(body):
 	var next_road = duplicate()
 	next_road.position.y = position.y + 256
 	
-	call_deferred("add_sibling", next_road)
+	add_sibling.call_deferred(next_road)
 	pass # Replace with function body.
 
 
