@@ -1,16 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpcv5khmjcl1w"]
+[gd_scene load_steps=7 format=3 uid="uid://bpcv5khmjcl1w"]
 
 [ext_resource type="TileSet" uid="uid://bsvacac1i6ot" path="res://tiles.tres" id="1_l812o"]
 [ext_resource type="Script" path="res://scripts/road.gd" id="1_wgeeb"]
-[ext_resource type="PackedScene" path="res://obstacles/tree.tscn" id="2_tdc03"]
+[ext_resource type="PackedScene" uid="uid://c074x7x487gjw" path="res://obstacles/tree.tscn" id="2_tdc03"]
 [ext_resource type="PackedScene" uid="uid://be3h51wjad2ax" path="res://obstacles/rock.tscn" id="3_tqakp"]
+[ext_resource type="PackedScene" uid="uid://bbqtonf540va1" path="res://obstacles/cirno.tscn" id="4_0mx1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh2g2"]
 size = Vector2(451, 123)
 
 [node name="Road" type="Node2D"]
 script = ExtResource("1_wgeeb")
-obstacles = Array[PackedScene]([ExtResource("2_tdc03"), ExtResource("3_tqakp")])
+obstacles = Array[PackedScene]([ExtResource("2_tdc03"), ExtResource("3_tqakp"), ExtResource("4_0mx1g")])
+obstacle_chances = Array[float]([1.0, 1.0, 0.3])
+obstacle_starting = Array[float]([0.0, 0.0, 1000.0])
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_l812o")

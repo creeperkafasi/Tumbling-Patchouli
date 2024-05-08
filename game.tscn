@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmqkd2kvmk2u1"]
+[gd_scene load_steps=14 format=3 uid="uid://bmqkd2kvmk2u1"]
 
 [ext_resource type="TileSet" uid="uid://bsvacac1i6ot" path="res://tiles.tres" id="1_sgf7b"]
 [ext_resource type="PackedScene" uid="uid://h8lwxmn3a03g" path="res://player.tscn" id="3_4kcpe"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bpcv5khmjcl1w" path="res://road.tscn" id="6_8potv"]
 [ext_resource type="Texture2D" uid="uid://c8njw7gx3ar7v" path="res://assets/tundra_ [version 1.0]/tundra_.png" id="6_fiqym"]
 [ext_resource type="AudioStream" uid="uid://v5lcrfmxppqn" path="res://assets/snow step.mp3" id="7_57tuj"]
+[ext_resource type="PackedScene" uid="uid://bbqtonf540va1" path="res://obstacles/cirno.tscn" id="7_df07r"]
 
 [sub_resource type="Animation" id="Animation_0hnnn"]
 length = 0.001
@@ -220,7 +221,6 @@ script = ExtResource("4_uiyfx")
 [node name="Player" parent="." instance=ExtResource("3_4kcpe")]
 unique_name_in_owner = true
 position = Vector2(-110, -48)
-scale = Vector2(0.7, 0.7)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(2, -175)
@@ -238,3 +238,6 @@ position = Vector2(0, 208)
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_57tuj")
 bus = &"SFX"
+
+[node name="Cirno" parent="." instance=ExtResource("7_df07r")]
+position = Vector2(121, 91)

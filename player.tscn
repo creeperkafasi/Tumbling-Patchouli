@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://h8lwxmn3a03g"]
+[gd_scene load_steps=24 format=3 uid="uid://h8lwxmn3a03g"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8qd8b"]
 [ext_resource type="Texture2D" uid="uid://ch5178gg5ps7e" path="res://assets/player.png" id="1_vubld"]
 [ext_resource type="Texture2D" uid="uid://05wcxh85rwhj" path="res://assets/hmg/pql.png" id="3_iuc1i"]
+[ext_resource type="AudioStream" uid="uid://b8rxdafo7c16n" path="res://assets/se_graze.wav" id="4_ic5tq"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h1sbh"]
 emission_shape = 3
@@ -132,9 +133,16 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xwvrd"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iveag"]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rqpe0"]
+radius = 8.06226
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_8qd8b")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -151,4 +159,25 @@ animation = &"tumbling"
 autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+z_index = 100
 shape = SubResource("CircleShape2D_xwvrd")
+
+[node name="GrazeBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrazeBox"]
+shape = SubResource("CircleShape2D_iveag")
+
+[node name="HurtBox" type="AnimatableBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+z_index = 1000
+shape = SubResource("CircleShape2D_rqpe0")
+
+[node name="GrazeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ic5tq")
+bus = &"SFX"
+
+[connection signal="body_entered" from="GrazeBox" to="." method="_on_graze_box_body_entered"]

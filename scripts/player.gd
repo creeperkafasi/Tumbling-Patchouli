@@ -45,3 +45,11 @@ func anim_tumble():
 
 func set_falling(is_falling: bool):
 	falling = is_falling
+
+
+func _on_graze_box_body_entered(body):
+	print("graze")
+	$GrazeSound.stop()
+	$GrazeSound.play()
+	# TODO(After Point System): Add graze points
+
