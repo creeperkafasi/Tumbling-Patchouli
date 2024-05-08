@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://bmqkd2kvmk2u1"]
+[gd_scene load_steps=17 format=3 uid="uid://bmqkd2kvmk2u1"]
 
 [ext_resource type="TileSet" uid="uid://bsvacac1i6ot" path="res://tiles.tres" id="1_sgf7b"]
+[ext_resource type="Script" path="res://scripts/game_controller.gd" id="2_2lmx7"]
 [ext_resource type="PackedScene" uid="uid://h8lwxmn3a03g" path="res://player.tscn" id="3_4kcpe"]
+[ext_resource type="AudioStream" uid="uid://canf5db07eyu3" path="res://assets/se_pldead00.wav" id="3_sld08"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="4_uiyfx"]
+[ext_resource type="PackedScene" uid="uid://dn1171j3jsp3w" path="res://end_menu.tscn" id="5_cbqyb"]
 [ext_resource type="PackedScene" uid="uid://bpcv5khmjcl1w" path="res://road.tscn" id="6_8potv"]
 [ext_resource type="Texture2D" uid="uid://c8njw7gx3ar7v" path="res://assets/tundra_ [version 1.0]/tundra_.png" id="6_fiqym"]
-[ext_resource type="AudioStream" uid="uid://v5lcrfmxppqn" path="res://assets/snow step.mp3" id="7_57tuj"]
-[ext_resource type="PackedScene" uid="uid://bbqtonf540va1" path="res://obstacles/cirno.tscn" id="7_df07r"]
 
 [sub_resource type="Animation" id="Animation_0hnnn"]
 length = 0.001
@@ -45,6 +46,42 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player/GPUParticles2D2:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Player/GPUParticles2D2:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera2D/EndMenuContainer/EndMenu:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_kkr1u"]
@@ -170,12 +207,91 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_tyqgn"]
+resource_name = "dead"
+length = 2.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SFX")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_sld08")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"anim_idle"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/GPUParticles2D2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player/GPUParticles2D2:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1500]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera2D/EndMenuContainer/EndMenu:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 2.92817),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-400, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q28kx"]
 _data = {
 "RESET": SubResource("Animation_0hnnn"),
+"dead": SubResource("Animation_tyqgn"),
 "start": SubResource("Animation_kkr1u"),
 "start_tumble": SubResource("Animation_vbpo2")
 }
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rhi3c"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 2.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fir34"]
 particle_flag_disable_z = true
@@ -204,6 +320,8 @@ layer_1/name = "Objects"
 layer_1/tile_data = PackedInt32Array(-327678, 65537, 7, -524287, 131073, 1, -458753, 131073, 1, -458754, 131073, 1, -458757, 131073, 1, -458759, 131073, 1, -393219, 131073, 1, -393217, 131073, 1, -458752, 131073, 1, -458750, 131073, 1, -524286, 131073, 1, -589821, 131073, 1, -458749, 131073, 1, -589820, 131073, 1, -655359, 131073, 1, -720893, 131073, 1, -655365, 131073, 1, -589826, 131073, 1, -655363, 131073, 1, -589833, 131073, 1, -655370, 131073, 1, -393228, 131073, 1, -458763, 131073, 1, -589836, 131073, 1, -655374, 131073, 1, -524303, 131073, 1, -589835, 131073, 1, -655360, 131073, 1, -720896, 131073, 1, -720890, 131073, 1, -720889, 131073, 1, -655353, 131073, 1, -720888, 131073, 1, -786425, 131073, 1, -786424, 131073, 1, -327679, 65537, 7, -262141, 65537, 7, -393212, 65537, 7, -327682, 65537, 7, -458751, 65537, 7, -262149, 65537, 7, -458744, 655361, 6, -393208, 655361, 5, -327672, 655361, 5, -196600, 655361, 6)
 
 [node name="GameController" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_2lmx7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GameController"]
 root_node = NodePath("../..")
@@ -218,9 +336,25 @@ limit_top = -170
 position_smoothing_speed = 100.0
 script = ExtResource("4_uiyfx")
 
+[node name="EndMenuContainer" type="Node2D" parent="Camera2D"]
+position = Vector2(400, 0)
+
+[node name="EndMenu" parent="Camera2D/EndMenuContainer" instance=ExtResource("5_cbqyb")]
+z_index = 2000
+scale = Vector2(1.8, 1.8)
+
 [node name="Player" parent="." instance=ExtResource("3_4kcpe")]
 unique_name_in_owner = true
+z_index = 1500
 position = Vector2(-110, -48)
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Player"]
+modulate = Color(0.810312, 0.832157, 0.995489, 1)
+emitting = false
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_rhi3c")
+one_shot = true
+explosiveness = 0.8
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(2, -175)
@@ -236,8 +370,4 @@ randomness = 1.0
 position = Vector2(0, 208)
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_57tuj")
 bus = &"SFX"
-
-[node name="Cirno" parent="." instance=ExtResource("7_df07r")]
-position = Vector2(121, 91)

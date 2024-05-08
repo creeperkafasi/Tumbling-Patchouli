@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://obstacles/cirno.gd" id="1_bh6yd"]
 [ext_resource type="Texture2D" uid="uid://c03wui2v1qya7" path="res://assets/hmg/qln.png" id="1_c8hy3"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_aul2l"]
+radius = 8.06226
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_p2fip"]
 atlas = ExtResource("1_c8hy3")
 region = Rect2(0, 448, 64, 64)
@@ -39,11 +42,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_aul2l"]
-radius = 6.0
-
-[node name="Cirno" type="Node2D"]
+[node name="Cirno" type="AnimatableBody2D"]
+collision_layer = 4
 script = ExtResource("1_bh6yd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_aul2l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ndkd4")
@@ -57,10 +62,3 @@ collision_mask = 2
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 target_position = Vector2(-25, 0)
 collision_mask = 2
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_aul2l")

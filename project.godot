@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Down The Mountain"
+config/name="Tumbling Patchouli"
 run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
@@ -21,9 +21,11 @@ Music="*res://music.tscn"
 
 [display]
 
-window/size/initial_position_type=0
+window/size/initial_position_type=3
+window/size/borderless=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
+window/handheld/orientation=1
 
 [editor]
 
@@ -50,7 +52,7 @@ Right={
 
 [physics]
 
-2d/default_gravity=50.0
+2d/default_gravity=20.0
 
 [rendering]
 

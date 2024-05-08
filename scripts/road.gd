@@ -25,7 +25,6 @@ func _ready():
 	
 	var total_chance = obstacle_chances.reduce(func(accum, num): return accum + num)
 	var random_number = randf_range(0.000001, total_chance)
-	print(total_chance)
 	var i = 0;
 	while random_number > 0:
 		random_number -= obstacle_chances[i]

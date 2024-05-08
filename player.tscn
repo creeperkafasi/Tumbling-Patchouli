@@ -136,13 +136,13 @@ animations = [{
 radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iveag"]
-radius = 24.0
+radius = 28.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqpe0"]
-radius = 8.06226
+radius = 4.12311
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 7
+collision_mask = 3
 script = ExtResource("1_8qd8b")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -164,20 +164,26 @@ z_index = 100
 shape = SubResource("CircleShape2D_xwvrd")
 
 [node name="GrazeBox" type="Area2D" parent="."]
+z_index = 1000
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrazeBox"]
 shape = SubResource("CircleShape2D_iveag")
+debug_color = Color(3.92266e-06, 0.65101, 0.0460342, 0.42)
 
-[node name="HurtBox" type="AnimatableBody2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 z_index = 1000
 shape = SubResource("CircleShape2D_rqpe0")
+debug_color = Color(0.993236, 0, 0.240593, 0.42)
 
 [node name="GrazeSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ic5tq")
 bus = &"SFX"
 
 [connection signal="body_entered" from="GrazeBox" to="." method="_on_graze_box_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
