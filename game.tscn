@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=13 format=3 uid="uid://bmqkd2kvmk2u1"]
 
-[ext_resource type="TileSet" path="res://tiles.tres" id="1_sgf7b"]
-[ext_resource type="PackedScene" path="res://player.tscn" id="3_4kcpe"]
+[ext_resource type="TileSet" uid="uid://bsvacac1i6ot" path="res://tiles.tres" id="1_sgf7b"]
+[ext_resource type="PackedScene" uid="uid://h8lwxmn3a03g" path="res://player.tscn" id="3_4kcpe"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="4_uiyfx"]
-[ext_resource type="PackedScene" path="res://road.tscn" id="6_8potv"]
-[ext_resource type="Texture2D" path="res://assets/tundra_ [version 1.0]/tundra_.png" id="6_fiqym"]
-[ext_resource type="AudioStream" path="res://assets/snow step.mp3" id="7_57tuj"]
+[ext_resource type="PackedScene" uid="uid://bpcv5khmjcl1w" path="res://road.tscn" id="6_8potv"]
+[ext_resource type="Texture2D" uid="uid://c8njw7gx3ar7v" path="res://assets/tundra_ [version 1.0]/tundra_.png" id="6_fiqym"]
+[ext_resource type="AudioStream" uid="uid://v5lcrfmxppqn" path="res://assets/snow step.mp3" id="7_57tuj"]
 
 [sub_resource type="Animation" id="Animation_0hnnn"]
 length = 0.001

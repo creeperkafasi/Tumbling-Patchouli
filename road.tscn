@@ -1,15 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpcv5khmjcl1w"]
+[gd_scene load_steps=6 format=3 uid="uid://bpcv5khmjcl1w"]
 
 [ext_resource type="TileSet" uid="uid://bsvacac1i6ot" path="res://tiles.tres" id="1_l812o"]
 [ext_resource type="Script" path="res://scripts/road.gd" id="1_wgeeb"]
 [ext_resource type="PackedScene" path="res://obstacles/tree.tscn" id="2_tdc03"]
+[ext_resource type="PackedScene" uid="uid://be3h51wjad2ax" path="res://obstacles/rock.tscn" id="3_tqakp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh2g2"]
 size = Vector2(451, 123)
 
 [node name="Road" type="Node2D"]
 script = ExtResource("1_wgeeb")
-obstacles = Array[PackedScene]([ExtResource("2_tdc03")])
+obstacles = Array[PackedScene]([ExtResource("2_tdc03"), ExtResource("3_tqakp")])
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_l812o")
@@ -30,7 +31,7 @@ shape = SubResource("RectangleShape2D_fh2g2")
 debug_color = Color(0.961303, 0, 0.0309184, 0.42)
 
 [node name="ObstacleRange" type="Marker2D" parent="."]
-position = Vector2(121, 0)
+position = Vector2(116, 0)
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="body_entered" from="Enter Area" to="." method="_on_enter_area_body_entered"]

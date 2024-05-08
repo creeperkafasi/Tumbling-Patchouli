@@ -4,10 +4,14 @@ var road_scene : PackedScene = load("res://road.tscn")
 @export var obstacles : Array[PackedScene] 
 var obstacle : Node2D
 @onready var obstacle_range = $ObstacleRange
+@onready var player : Node2D = get_node("../Player")
 
-func _ready():
-	var obstacle_x = randf_range(-1, 1) * obstacle_range.position.x
-	
+func _ready():	
+	var obstacle_x
+	if randi_range(0,3) > 0:
+		obstacle_x = randf_range(-1, 1) * obstacle_range.position.x
+	else:
+		obstacle_x = clampf(player.position.x, -obstacle_range.position.x, obstacle_range.position.x)
 	obstacle = obstacles[randi_range(0, obstacles.size() - 1)].instantiate()
 	
 	obstacle.position = position
