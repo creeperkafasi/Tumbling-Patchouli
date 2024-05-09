@@ -7,7 +7,7 @@ on:
 
 jobs:
   Godot:
-    runs-on: ubuntu-22.04
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
         with:
