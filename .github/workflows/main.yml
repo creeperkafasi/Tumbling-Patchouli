@@ -7,9 +7,9 @@ on:
 
 jobs:
   Godot:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         with:
           lfs: true
       - name: Build
