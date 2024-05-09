@@ -6,8 +6,8 @@ on:
 
 env:
   GODOT_VERSION: 4.2.2
-  EXPORT_NAME: test-project
-  PROJECT_PATH: test-project
+  EXPORT_NAME: tumbling-patchouli
+  PROJECT_PATH: .
 
 jobs:
   export-web:
