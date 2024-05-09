@@ -17,6 +17,7 @@ jobs:
         uses: manleydev/build-godot-action@f759ed7f8fcb5137cb70873ecf663aa8a1bd998b
         with:
           preset: Web
+          subdirectory: web
       - name: Deploy Web 🚀🌐
         uses: JamesIves/github-pages-deploy-action@v4
         with:
