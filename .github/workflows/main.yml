@@ -9,11 +9,12 @@ jobs:
   Godot:
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          echo ${{ github.workspace }}
+          echo $GITHUB_WORKSPACE
       - uses: actions/checkout@v2
         with:
           lfs: true
-      - run: mkdir /github/workspace/build
-      - run: mkdir /github/workspace/build/web
       - name: Build
         id: build
         uses: manleydev/build-godot-action@f759ed7f8fcb5137cb70873ecf663aa8a1bd998b
