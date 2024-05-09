@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED = 400
+const SPEED = 200
 var direction
 @onready var ray_cast_right = $RayCastRight
 @onready var ray_cast_left = $RayCastLeft
@@ -12,7 +12,7 @@ func _ready():
 	if direction == -1:
 		animated_sprite_2d.flip_h = true
 
-func _process(delta):
+func _physics_process(delta):
 	#print(position.x)
 	if direction == 1 and ray_cast_right.is_colliding():
 			direction = -1

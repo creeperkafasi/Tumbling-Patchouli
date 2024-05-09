@@ -46,6 +46,10 @@ animations = [{
 collision_layer = 4
 script = ExtResource("1_bh6yd")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_right = 0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_aul2l")

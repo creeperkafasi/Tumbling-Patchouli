@@ -24,6 +24,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	
 	animated_sprite.speed_scale = velocity.y / 100
+	scale = Vector2.ONE * (1 + max(0, log(position.y - 2000) / 10))
 	
 	var direction = Input.get_axis("Left", "Right")
 	if direction:

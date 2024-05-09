@@ -12,8 +12,8 @@ size = Vector2(451, 123)
 [node name="Road" type="Node2D"]
 script = ExtResource("1_wgeeb")
 obstacles = Array[PackedScene]([ExtResource("3_tqakp"), ExtResource("2_tdc03"), ExtResource("4_0mx1g")])
-obstacle_chances = Array[float]([0.0, 0.0, 0.3])
-obstacle_starting = Array[float]([0.0, 400.0, 0.0])
+obstacle_chances = Array[float]([1.0, 1.0, 0.3])
+obstacle_starting = Array[float]([0.0, 400.0, 1000.0])
 spawn_at_player_pos_chance = 0.1
 
 [node name="TileMap" type="TileMap" parent="."]
