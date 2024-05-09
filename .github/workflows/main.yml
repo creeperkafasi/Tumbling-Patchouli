@@ -7,11 +7,12 @@ on:
 
 jobs:
   Godot:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           lfs: true
+      - run: echo ${{github.workspace}}
       - name: Build
         id: build
         uses: manleydev/build-godot-action@f759ed7f8fcb5137cb70873ecf663aa8a1bd998b
